@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <style>
+    #main {
+    	height: 800px;
+    	width: 1280px;
+    }
+    #div-one {
+    	position: absolute;
+    	top: 150px;
+    	left: 150px;
+    	width: 100px;
+    	height: 100px;
+    	padding: 10px;
+    	border: 1px solid grey;
+    }
+    #div-two {
+    	position: absolute;
+    	top: 150px;
+    	left: 450px;
+    	width: 100px;
+    	height: 100px;
+    	padding: 10px;
+    	border: 1px solid grey;
+    }
+  	#main .default {
+  		background-color: whiteSmoke;
+    	color: black;
+  	}
+  	#main .yellow {
+  		background-color: red;
+    	color: green;
+  	}
+  	#main .green {
+  		background-color: yellow;
+    	color: red;
+  	}
+  	#main .red {
+  		background-color: green;
+    	color: yellow;
+  	}
+  	.default {
+  		background-color: white;
+  	}
+  	.yellow {
+  		background-color: yellow;
+  	}
+  	.green {
+  		background-color: green;
+  	}
+  	.red {
+  		background-color: red;
+  	}
+  </style>
+  </head>
+  <body ng-app="MyApp">
+  	<div id="main" ng-class="ctrl.classObject" ng-controller="MainController as ctrl">
+  		<h3> {{ ctrl.classObject | json }}</h3>
+  		<input 
+        type="checkbox"
+        ng-model="ctrl.classObject.yellow">Yellow
+        <input 
+        type="checkbox"
+        ng-model="ctrl.classObject.green">Green
+        <input 
+        type="checkbox"
+        ng-model="ctrl.classObject.red">Red
+        <input 
+        type="checkbox"
+        ng-model="ctrl.classObject.default">Default
+
+  		<div id="div-one" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+  		<div id="div-two" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+  	</div>
+
+  </body>
+</html>
