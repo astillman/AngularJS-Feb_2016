@@ -26,6 +26,9 @@
     	padding: 10px;
     	border: 1px solid grey;
     }
+    #main {
+      padding: 25px;
+    }
   	#main .default {
   		background-color: whiteSmoke;
     	color: black;
@@ -42,6 +45,10 @@
   		background-color: green;
     	color: yellow;
   	}
+    #main .blue {
+      background-color: whiteSmoke;
+      color: blue;
+    }
   	.default {
   		background-color: white;
   	}
@@ -54,24 +61,44 @@
   	.red {
   		background-color: red;
   	}
+    .blue {
+      background-color: blue;
+    }
   </style>
   </head>
   <body ng-app="MyApp">
   	<div id="main" ng-class="ctrl.classObject" ng-controller="MainController as ctrl">
-  		<h3> {{ ctrl.classObject | json }}</h3>
-  		<input 
-        type="checkbox"
-        ng-model="ctrl.classObject.yellow">Yellow
+  		<!--<h3> {{ ctrl.classObject | json }}</h3>-->
         <input 
-        type="checkbox"
-        ng-model="ctrl.classObject.green">Green
+        type="radio"
+        name="theme"
+        value="default"
+        ng-model="ctrl.theme"
+        ng-change="ctrl.updateTheme()">Default
+  		  <input 
+        type="radio"
+        name="theme"
+        value="yellow"
+        ng-model="ctrl.theme"
+        ng-change="ctrl.updateTheme()">Yellow
         <input 
-        type="checkbox"
-        ng-model="ctrl.classObject.red">Red
+        type="radio"
+        name="theme"
+        value="green"
+        ng-model="ctrl.theme"
+        ng-change="ctrl.updateTheme()">Green
         <input 
-        type="checkbox"
-        ng-model="ctrl.classObject.default">Default
-
+        type="radio"
+        name="theme"
+        value="red"
+        ng-model="ctrl.theme"
+        ng-change="ctrl.updateTheme()">Red
+         <input 
+        type="radio"
+        name="theme"
+        value="blue"
+        ng-model="ctrl.theme"
+        ng-change="ctrl.updateTheme()">Blue
   		<div id="div-one" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
   		<div id="div-two" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
   	</div>
