@@ -42,7 +42,7 @@
         <div ng-bind="folder.name" class="folder">
         </div>
         <div ng-repeat="file in folder.files" ng-show="ctrl.expanded">
-            <div class="file" ng-bind="'- ' + file"></div>
+            <div class="file" ng-bind="'- ' + file.name"></div>
           </div>
       </div>
     </div>
@@ -53,6 +53,9 @@
       <div ng-repeat="folder in ctrl.folders">
         <input type="radio" name="folder-index" ng-value="$index" ng-model="ctrl.selectedFolderIndex"><span ng-bind="folder.name"></span>
       </div>
+    </div>
+    <div>
+    {{ ctrl | json }}
     </div>
   	</div>
 
