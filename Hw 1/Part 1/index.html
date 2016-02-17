@@ -1,51 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
   <script type="text/javascript" src="index.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <style>
     #main {
+      margin-top: 20px;
     	height: 800px;
     	width: 1280px;
     }
-    #div-one {
-    	position: absolute;
-    	top: 150px;
-    	left: 150px;
-    	width: 100px;
-    	height: 100px;
-    	padding: 10px;
-    	border: 1px solid grey;
+
+    #part-1 {
+      height: 180px;
+      width: 100%;
     }
-    #div-two {
-    	position: absolute;
-    	top: 150px;
-    	left: 450px;
-    	width: 100px;
-    	height: 100px;
-    	padding: 10px;
-    	border: 1px solid grey;
-    }
-    #main {
-      padding: 25px;
-    }
-  	#main .default {
+  
+  	#part-1 .default {
   		background-color: whiteSmoke;
     	color: black;
   	}
-  	#main .yellow {
+  	#part-1  .yellow {
   		background-color: red;
     	color: green;
   	}
-  	#main .green {
+  	#part-1  .green {
   		background-color: yellow;
     	color: red;
   	}
-  	#main .red {
+  	#part-1 .red {
   		background-color: green;
     	color: yellow;
   	}
-    #main .blue {
+    #part-1 .blue {
       background-color: whiteSmoke;
       color: blue;
     }
@@ -64,11 +54,22 @@
     .blue {
       background-color: blue;
     }
+
+    .folder {
+      font-size: 1em;
+    }
+
+    .file {
+      font-size: 1em;
+      margin-left: 10px;
+    }
   </style>
   </head>
   <body ng-app="MyApp">
-  	<div id="main" ng-class="ctrl.classObject" ng-controller="MainController as ctrl">
-  		<!--<h3> {{ ctrl.classObject | json }}</h3>-->
+  	<div id="main" class="container-fluid">
+      <div id="part-1" class="panel panel-default" ng-class="ctrl.classObject" ng-controller="Controller1 as ctrl">
+  		<div class="panel-body">
+      <div class="row container">
         <input 
         type="radio"
         name="theme"
@@ -99,9 +100,41 @@
         value="blue"
         ng-model="ctrl.theme"
         ng-change="ctrl.updateTheme()">Blue
-  		<div id="div-one" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
-  		<div id="div-two" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
-  	</div>
+      </div>
+      <p>
+      <div class = "panel panel-default">
+  		  <div id="div-one" class="panel-body" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+      </div>
+      <div class = "panel panel-default">
+  		  <div id="div-two" class="panel-body" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+      </div>
+      </div>
+    </div>
 
+    <div id="part-2" ng-class="ctrl2.classObject" ng-controller="Controller2 as ctrl2">
+    <input type="checkbox" ng-model="ctrl2.expanded"> Expand folders
+    <div class="panel panel-default">
+    <div id="folder-tree" class="panel-body">
+      <div ng-repeat="folder in ctrl2.folders">
+        <div ng-bind="folder.name" class="folder">
+        </div>
+        <div ng-repeat="file in folder.files" ng-show="ctrl2.expanded">
+            <div class="file" ng-bind="'- ' + file.name"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div id="add-files" class="panel-body">
+      <h5>Add files</h5>
+      <input type="text" ng-model="ctrl2.toAdd" placeholder="Filename...">
+      <span><button ng-disabled="((ctrl2.selectedFolderIndex === undefined) || (!ctrl2.toAdd))" ng-click="ctrl2.onButtonClick()">Add file</button></span>
+      <div ng-repeat="folder in ctrl2.folders">
+        <input type="radio" name="folder-index" ng-value="$index" ng-model="ctrl2.selectedFolderIndex"><span ng-bind="folder.name"></span>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
   </body>
 </html>
