@@ -1,0 +1,51 @@
+ <style>
+    #part-1 {
+      margin-top: 20px;
+    }
+  
+  	#part-1 .default {
+  		background-color: whiteSmoke;
+    	color: black;
+  	}
+  	#part-1  .yellow {
+  		background-color: red;
+    	color: green;
+  	}
+  	#part-1  .green {
+  		background-color: yellow;
+    	color: red;
+  	}
+  	#part-1 .red {
+  		background-color: green;
+    	color: yellow;
+  	}
+    #part-1 .blue {
+      background-color: whiteSmoke;
+      color: blue;
+    }
+  	.default {
+  		background-color: white;
+  	}
+  	.yellow {
+  		background-color: yellow;
+  	}
+  	.green {
+  		background-color: green;
+  	}
+  	.red {
+  		background-color: red;
+  	}
+    .blue {
+      background-color: blue;
+    }
+
+    .folder {
+      font-size: 1em;
+      margin-left: 3px;
+    }
+
+    .file {
+      font-size: 1em;
+      margin-left: 10px;
+    }
+  </style>

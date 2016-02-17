@@ -6,101 +6,55 @@
   <script type="text/javascript" src="index.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-  <style>
-    #main {
-      margin-top: 20px;
-    	height: 800px;
-    	width: 1280px;
-    }
-
-    #part-1 {
-      height: 180px;
-      width: 100%;
-    }
-  
-  	#part-1 .default {
-  		background-color: whiteSmoke;
-    	color: black;
-  	}
-  	#part-1  .yellow {
-  		background-color: red;
-    	color: green;
-  	}
-  	#part-1  .green {
-  		background-color: yellow;
-    	color: red;
-  	}
-  	#part-1 .red {
-  		background-color: green;
-    	color: yellow;
-  	}
-    #part-1 .blue {
-      background-color: whiteSmoke;
-      color: blue;
-    }
-  	.default {
-  		background-color: white;
-  	}
-  	.yellow {
-  		background-color: yellow;
-  	}
-  	.green {
-  		background-color: green;
-  	}
-  	.red {
-  		background-color: red;
-  	}
-    .blue {
-      background-color: blue;
-    }
-
-    .folder {
-      font-size: 1em;
-    }
-
-    .file {
-      font-size: 1em;
-      margin-left: 10px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body ng-app="MyApp">
-  	<div id="main" class="container-fluid">
+  	<div id="main" class="container">
       <div id="part-1" class="panel panel-default" ng-class="ctrl.classObject" ng-controller="Controller1 as ctrl">
   		<div class="panel-body">
       <div class="row container">
-        <input 
-        type="radio"
-        name="theme"
-        value="default"
-        ng-model="ctrl.theme"
-        ng-change="ctrl.updateTheme()">Default
-  		  <input 
-        type="radio"
-        name="theme"
-        value="yellow"
-        ng-model="ctrl.theme"
-        ng-change="ctrl.updateTheme()">Yellow
-        <input 
-        type="radio"
-        name="theme"
-        value="green"
-        ng-model="ctrl.theme"
-        ng-change="ctrl.updateTheme()">Green
-        <input 
-        type="radio"
-        name="theme"
-        value="red"
-        ng-model="ctrl.theme"
-        ng-change="ctrl.updateTheme()">Red
-         <input 
-        type="radio"
-        name="theme"
-        value="blue"
-        ng-model="ctrl.theme"
-        ng-change="ctrl.updateTheme()">Blue
+        <label class="radio-inline">
+          <input 
+          type="radio"
+          name="theme"
+          value="default"
+          ng-model="ctrl.theme"
+          ng-change="ctrl.updateTheme()"> Default
+        </label>
+        <label class="radio-inline">
+  		    <input 
+          type="radio"
+          name="theme"
+          value="yellow"
+          ng-model="ctrl.theme"
+          ng-change="ctrl.updateTheme()"> Yellow
+        </label>
+        <label class="radio-inline">
+          <input 
+          type="radio"
+          name="theme"
+          value="green"
+          ng-model="ctrl.theme"
+          ng-change="ctrl.updateTheme()"> Green
+        </label>
+        <label class="radio-inline">
+          <input 
+          type="radio"
+          name="theme"
+          value="red"
+          ng-model="ctrl.theme"
+          ng-change="ctrl.updateTheme()"> Red
+        </label>
+        <label class="radio-inline">
+          <input 
+          type="radio"
+          name="theme"
+          value="blue"
+          ng-model="ctrl.theme"
+          ng-change="ctrl.updateTheme()"> Blue
+        </label>
       </div>
+    </label>
       <p>
       <div class = "panel panel-default">
   		  <div id="div-one" class="panel-body" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
@@ -116,7 +70,10 @@
     <div class="panel panel-default">
     <div id="folder-tree" class="panel-body">
       <div ng-repeat="folder in ctrl2.folders">
-        <div ng-bind="folder.name" class="folder">
+        <div>
+          <span class="glyphicon glyphicon-folder-close" ng-hide="ctrl2.expanded"></span>
+          <span class="glyphicon glyphicon-folder-open" ng-show="ctrl2.expanded"></span>
+          <span ng-bind="folder.name" class="folder"></span>
         </div>
         <div ng-repeat="file in folder.files" ng-show="ctrl2.expanded">
             <div class="file" ng-bind="'- ' + file.name"></div>
@@ -129,8 +86,10 @@
       <h5>Add files</h5>
       <input type="text" ng-model="ctrl2.toAdd" placeholder="Filename...">
       <span><button ng-disabled="((ctrl2.selectedFolderIndex === undefined) || (!ctrl2.toAdd))" ng-click="ctrl2.onButtonClick()">Add file</button></span>
-      <div ng-repeat="folder in ctrl2.folders">
-        <input type="radio" name="folder-index" ng-value="$index" ng-model="ctrl2.selectedFolderIndex"><span ng-bind="folder.name"></span>
+      <div class="radio" ng-repeat="folder in ctrl2.folders">
+        <label>
+        <input type="radio" name="folder-index" ng-value="$index" ng-model="ctrl2.selectedFolderIndex"><span class="folder" ng-bind="folder.name"></span>
+        </label>
       </div>
     </div>
     </div>
