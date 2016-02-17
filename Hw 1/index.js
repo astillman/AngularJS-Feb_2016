@@ -31,5 +31,6 @@ angular.module('MyApp', [])
 	self.onButtonClick = function() {
 		//alert('clicked');
 		self.folders[self.selectedFolderIndex].files.push({name: self.toAdd});
+		self.toAdd = '';
 	};
 });
