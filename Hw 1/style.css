@@ -3,24 +3,44 @@
       margin-top: 20px;
     }
   
-  	#part-1 .default {
+  	div#div-one.panel-body.default {
   		background-color: whiteSmoke;
     	color: black;
   	}
-  	#part-1  .yellow {
+  	div#div-one.panel-body.yellow {
   		background-color: red;
     	color: green;
   	}
-  	#part-1  .green {
+  	div#div-one.panel-body.green {
   		background-color: yellow;
     	color: red;
   	}
-  	#part-1 .red {
+  	div#div-one.panel-body.red {
   		background-color: green;
     	color: yellow;
   	}
-    #part-1 .blue {
+    div#div-one.panel-body.blue {
       background-color: whiteSmoke;
+      color: blue;
+    }
+    div#div-two.panel-body.default {
+      background-color: #BABABA;
+      color: black;
+    }
+    div#div-two.panel-body.yellow {
+      background-color: #F70E8A;
+      color: green;
+    }
+    div#div-two.panel-body.green {
+      background-color: #C3A40C;
+      color: red;
+    }
+    div#div-two.panel-body.red {
+      background-color: #2C462D;
+      color: yellow;
+    }
+    div#div-two.panel-body.blue {
+      background-color: #255A27;
       color: blue;
     }
   	.default {
