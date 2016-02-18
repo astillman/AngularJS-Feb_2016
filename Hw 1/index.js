@@ -28,6 +28,7 @@ angular.module('MyApp', [])
 	  {name: 'Folder 3', files: [{name: 'File 3.1'},{name: 'File 3.2'}, {name: 'File 3.3'}]}
 	];
 	self.expanded = true;
+	self.selectedFolderIndex = 0;
 	self.onButtonClick = function() {
 		//alert('clicked');
 		self.folders[self.selectedFolderIndex].files.push({name: self.toAdd});
