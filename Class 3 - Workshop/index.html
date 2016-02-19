@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</head>
+<body ng-app="MyApp">
+	<div id="main" ng-controller="MainController as ctrl">
+		<form name="myForm">
+		<div>
+			<label>First: </label>
+			<span>
+				<input type="text" placeholder="First name" ng-model="ctrl.tempContact.fName" name="fName" ng-show="ctrl.edit" ng-required="true">
+			</span>
+			<span ng-bind="ctrl.savedContact.fName" ng-hide="ctrl.edit">
+			</span>
+		</div>
+		<div>
+			<label>Last: </label>
+			<span>
+				<input type="text" placeholder="Last name" name="lName" ng-model="ctrl.tempContact.lName" ng-show="ctrl.edit" ng-required="true">
+			</span>
+			<span ng-bind="ctrl.savedContact.lName" ng-hide="ctrl.edit">
+			</span>
+		</div>
+		<div>
+			<label>Email: </label><span ng-bind="ctrl.email"></span>
+		</div>
+	<div ng-show="ctrl.edit">
+		<span>
+			<button ng-click="ctrl.onCancel()">Cancel</button>
+	 	</span>
+	 	<span>
+			<button ng-click="ctrl.onSave()" ng-disabled="myForm.$error.required">Save</button>
+	 	</span>
+	</div>
+	<div ng-hide="ctrl.edit">
+		<button ng-click="ctrl.onEdit()">Edit</button>
+	</div>
+    </form>
+	<pre>{{ ctrl | json }}</pre>
+</div>
+</body>
+</html>

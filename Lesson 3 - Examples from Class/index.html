@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    .yellow { 
+      color: yellow;
+    }
+  </style>
+  </head>
+
+  <body ng-app="MyApp">
+  	<div ng-controller="MainController as ctrl">
+
+      <h3 ng-bind="ctrl.myDog.name"></h3>
+
+      <input ng-model="ctrl.myDog.name" ng-change="ctrl.onDogsNameChange()">
+
+      <!--<h3>ng-class object</h3>
+      <input type="checkbox" ng-model="ctrl.classObject.red">Red
+      <input type="checkbox" ng-model="ctrl.classObject.green">Green
+      <input type="checkbox" ng-model="ctrl.classObject.yellow">Yellow
+      <div ng-class="ctrl.classObject">
+         daslj sdalkjl asdflkjjasdf kasdf lkjsdfa
+      </div>
+
+      <h3>ng-class string</h3>
+      <input type="text" placeholder="Type a class name" ng-model="ctrl.userText">
+      <div ng-class="ctrl.userText">
+         daslj sdalkjl asdflkjjasdf kasdf lkjsdfa
+      </div>
+
+      <h3>ng-click</h3>
+      <button ng-click="ctrl.onButtonClick()">Button</button>
+
+      <h3>ng-show and ng-hide</h3>
+      <input type="checkbox" ng-model="ctrl.shouldShow">
+      <div ng-show="ctrl.shouldShow" style="color:red">
+         lkdfsjl aslkfj asdlkjfsad lkjlkasfdlkj sdaflkj
+      </div>
+      <div ng-hide="ctrl.shouldShow" style="color:green">
+         lkd  adsklsdfa lksd kdskkd k sdk lkafsd lkkadfs 
+      </div>
+
+
+
+  		<h3>Checkbox ng-model</h3>
+  		<h3 ng-bind="ctrl.select"></h3>
+  		<input type="checkbox" ng-model="ctrl.select">
+
+  		<h3>Radio ng-model dynamically-assigned values</h3>
+  		<h3 ng-bind="ctrl.animalSelected1.name"></h3>
+  		
+  		<input 
+        type="radio"
+        ng-value="ctrl.myDog" 
+        name="animal" 
+        ng-model="ctrl.animalSelected1">Dog
+  		<input 
+        type="radio" 
+        ng-value="ctrl.myCat" 
+        name="animal" 
+        ng-model="ctrl.animalSelected1">Cat
+  		<input 
+        type="radio" 
+        ng-value="ctrl.myCow" 
+        name="animal" 
+        ng-model="ctrl.animalSelected1">Cow
+
+      <h3>Radio ng-model statically-assigned values</h3>
+      <h3 ng-bind="ctrl.animalSelected"></h3>
+      
+      <input 
+        type="radio"
+        value="dog" 
+        name="animal2" 
+        ng-model="ctrl.animalSelected">Dog
+      <input 
+        type="radio" 
+        value="cat" 
+        name="animal2" 
+        ng-model="ctrl.animalSelected">Cat
+      <input 
+        type="radio" 
+        value="cow" 
+        name="animal2" 
+        ng-model="ctrl.animalSelected">Cow
+
+
+  		<h3 ng-bind="ctrl.username"></h3>
+  		<input type="text" ng-model="ctrl.username">
+
+
+ 		<div ng-bind="ctrl.greeting"></div>
+ 		<h3>{{ctrl.greeting + ctrl.greeting + (2+2)}}</h3>
+
+ 		<h3>Simple ng-repeat</h3>
+ 		<div ng-repeat="item in ctrl.simpleArray">
+ 			<h4 ng-bind="item"></h4>
+ 			
+ 			<br/>
+ 			<br/>
+ 		</div>
+
+ 		<h3>Array of objects ng-repeat over </h3>
+ 		<div ng-repeat="person in ctrl.interArray">
+ 		  <h4 ng-bind="person.name"></h4>
+ 		</div>
+
+ 		<h3>Object ng-repeat</h3>
+ 		<div ng-repeat="(key, value) in ctrl.states">
+ 			<h3>Abbr:<span ng-bind="key"></span></h3>
+ 			<h3>Name:<span ng-bind="value"></span></h3>
+ 		</div>
+  	</div>-->
+  </body>
+  
+</html>

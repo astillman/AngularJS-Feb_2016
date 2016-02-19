@@ -68,4 +68,16 @@
       font-size: 1em;
       margin-left: 10px;
     }
+
+    .high {
+      color: red;
+    }
+
+    .med {
+      color: blue;
+    }
+
+    .low {
+      color: green;
+    }
   </style>

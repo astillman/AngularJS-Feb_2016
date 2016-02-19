@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="MyApp">
+ <div id="main" class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Assignment 1</div>
+    <div id="part-1" ng-class="ctrl.classObject" ng-controller="Controller1 as ctrl">
+      <div class="panel-body">
+        <div class="row container">
+          <label class="radio-inline">
+            <input 
+            type="radio"
+            name="theme"
+            value="default"
+            ng-model="ctrl.theme"
+            ng-change="ctrl.updateTheme()"> Default
+          </label>
+          <label class="radio-inline">
+            <input 
+            type="radio"
+            name="theme"
+            value="yellow"
+            ng-model="ctrl.theme"
+            ng-change="ctrl.updateTheme()"> Yellow
+          </label>
+          <label class="radio-inline">
+            <input 
+            type="radio"
+            name="theme"
+            value="green"
+            ng-model="ctrl.theme"
+            ng-change="ctrl.updateTheme()"> Green
+          </label>
+          <label class="radio-inline">
+            <input 
+            type="radio"
+            name="theme"
+            value="red"
+            ng-model="ctrl.theme"
+            ng-change="ctrl.updateTheme()"> Red
+          </label>
+          <label class="radio-inline">
+            <input 
+            type="radio"
+            name="theme"
+            value="blue"
+            ng-model="ctrl.theme"
+            ng-change="ctrl.updateTheme()"> Blue
+          </label>
+        </div>
+      </label>
+      <p>
+        <div class = "panel panel-default">
+          <div id="div-one" class="panel-body" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+        </div>
+        <div class = "panel panel-default">
+          <div id="div-two" class="panel-body" ng-class="ctrl.classObject">Lorem ipsum blah blah</div>
+        </div>
+        <div id="part-2" ng-class="ctrl2.classObject" ng-controller="Controller2 as ctrl2">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="ctrl2.expanded"> Expand folders
+            </label>
+          </div>
+          <div id="folder-tree" class="panel-body">
+            <div ng-repeat="folder in ctrl2.folders">
+              <div>
+                <span class="glyphicon glyphicon-folder-close" ng-hide="ctrl2.expanded"></span>
+                <span class="glyphicon glyphicon-folder-open" ng-show="ctrl2.expanded"></span>
+                <span ng-bind="folder.name" class="folder"></span>
+              </div>
+              <div ng-repeat="file in folder.files" ng-show="ctrl2.expanded">
+                <div class="file" ng-bind="'- ' + file.name"></div>
+              </div>
+            </div>
+            <div>
+              <div id="add-files">
+                <h5>Add files</h5>
+                <input type="text" ng-model="ctrl2.toAdd" placeholder="Filename...">
+                <span><button ng-disabled="((ctrl2.selectedFolderIndex === undefined) || (!ctrl2.toAdd))" ng-click="ctrl2.onButtonClick()">Add file</button></span>
+                <div class="radio" ng-repeat="folder in ctrl2.folders">
+                  <label>
+                    <input type="radio" name="folder-index" ng-value="$index" ng-model="ctrl2.selectedFolderIndex"><span class="folder" ng-bind="folder.name"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Workshop 1</div>
+    <div class="panel-body">
+      <div id="main" ng-controller="Controller3 as ctrl">
+        <form name="myForm">
+          <div>
+            <label>First: </label>
+            <span>
+              <input type="text" placeholder="First name" ng-model="ctrl.tempContact.fName" name="fName" ng-show="ctrl.edit" ng-required="true">
+            </span>
+            <span ng-bind="ctrl.savedContact.fName" ng-hide="ctrl.edit">
+            </span>
+          </div>
+          <div>
+            <label>Last: </label>
+            <span>
+              <input type="text" placeholder="Last name" name="lName" ng-model="ctrl.tempContact.lName" ng-show="ctrl.edit" ng-required="true">
+            </span>
+            <span ng-bind="ctrl.savedContact.lName" ng-hide="ctrl.edit">
+            </span>
+          </div>
+          <div>
+            <label>Email: </label><span ng-bind="ctrl.email"></span>
+          </div>
+          <div ng-show="ctrl.edit">
+            <span>
+              <button ng-click="ctrl.onCancel()">Cancel</button>
+            </span>
+            <span>
+              <button ng-click="ctrl.onSave()" ng-disabled="myForm.$error.required">Save</button>
+            </span>
+          </div>
+          <div ng-hide="ctrl.edit">
+            <button ng-click="ctrl.onEdit()">Edit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Assignment 2</div>
+    <div class="panel-body">
+      <div id="todos" ng-controller="Controller4 as ctrl">
+        <h3>To do list</h3>
+        <div><label>Task name: </label><input class="form-control" type="text" ng-model="ctrl.newTask.name"></div>
+        <div><label>Description: </label><input class="form-control" type="text" ng-model="ctrl.newTask.description"></div>
+        <label>Priority:</label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="high" ng-model="ctrl.newTask.priority"> High
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="med" ng-model="ctrl.newTask.priority"> Medium
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="priority" value="low" ng-model="ctrl.newTask.priority"> Low
+        </label>
+        <div>
+          <button ng-click="ctrl.onSaveClicked()">Add</button>
+        </div>
+        <div ng-repeat="task in ctrl.taskList">
+          <div class="well">
+            <div ng-class="task.priority">
+              <h4>To do <span ng-bind="($index+1)"></span></h4>
+              <p ng-bind="task.name"></p>
+              <p ng-bind="task.description"></p> 
+              <label>Priority: </label><span ng-class="task.priority" ng-bind="task.priority"></span>   
+              <div>
+              </div>
+            </div>
+            <button ng-click="ctrl.onDeleteClicked($index)">Delete</button>
+          </div>
+        </div>
+      </div>
+      <!--<pre> {{ ctrl | json }} </pre>-->
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Assignment 3</div>
+  <div class="panel-body">
+
+  </div>
+</div>
+</div>
+</body>
+</html>
