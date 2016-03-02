@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+
+<script type="text/javascript" src="index.js"></script> 
+<script type="text/javascript" src="services.js"></script>
+
+  
+  
+  <style>
+    .tile {
+      border: 1px solid grey;
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
+  </head>
+
+  <body ng-app="MyApp">
+  	<div ng-controller="MainController as ctrl">
+    <h3>Car Info</h3>
+    <div>
+      <label>Name: </label><span ng-bind="ctrl.car1.name"></span></label>
+    </div>
+    <div>
+      <label>Year: </label><span ng-bind="ctrl.car1.year"></span></label>
+    </div>
+    <div>
+      <label>Age: </label><span ng-bind="ctrl.car1.age"></span></label>
+    </div>
+    <!--all the functions defined on the prototype are available in the view !-->
+    <input type="text" ng-model="ctrl.car1.year" ng-change="ctrl.car1.setYear(ctrl.car1.year)"></input>
+    </div>
+
+      <div ng-controller="Controller2 as ctrl">
+    <h3>Car Info</h3>
+    <div>
+      <label>Name: </label><span ng-bind="ctrl.car1.name"></span></label>
+    </div>
+    <div>
+      <label>Year: </label><span ng-bind="ctrl.car1.year"></span></label>
+    </div>
+    <div>
+      <label>Age: </label><span ng-bind="ctrl.car1.age"></span></label>
+    </div>
+    <!--all the functions defined on the prototype are available in the view !-->
+    <input type="text" ng-model="ctrl.car1.year" ng-change="ctrl.car1.setYear(ctrl.car1.year)"></input>
+    </div>
+  </body>
+  
+</html>
