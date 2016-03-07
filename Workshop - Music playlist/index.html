@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+
+	<script type="text/javascript" src="index.js"></script> 
+	<script type="text/javascript" src="services.js"></script>
+
+	<style>
+	#left {
+		float: left;
+		width: 200px;
+	} 
+
+	#right {
+		display: block;
+	}
+
+	</style>
+</head>
+
+<body ng-app="MyApp">
+	<div ng-controller="MainController as ctrl">
+		<div>
+			<div id="left">
+				<div><label>Name: </label><input ng-model="ctrl.user.name" type="text"></input></div>
+				<div><label>Age: </label><input ng-model="ctrl.user.age" type="text"></input></div>
+				<p></p>
+				<label>Select songs</label>
+				<div ng-repeat="song in ctrl.library">
+					<div ng-show="song.genre === ctrl.selectedGenre">
+						<input type="checkbox" ng-model="song.selected"><span ng-bind="song.title"></span>
+					</div>
+				</div>
+				<p></p>
+				<button ng-click="ctrl.playlist.generateList(ctrl.library, ctrl.explicitVersion)">Generate List</button>
+			</div>
+			<div id="right">
+				<label>Select Genre</label>
+				<div><input type="radio" name="genre" value="Butt Rock" ng-model="ctrl.selectedGenre"> Butt Rock</div>
+				<div><input type="radio" name="genre" value="Freedom Rock" ng-model="ctrl.selectedGenre"> Freedom Rock</div>
+				<div><input type="radio" name="genre" value="Psychadelic Rock" ng-model="ctrl.selectedGenre"> Psychadelic Rock</div>
+				<p></p>
+				<div ng-show="ctrl.user.age > 14" ng-model="ctrl.explicitVersion"><input type="checkbox"> Explicit</div>
+			</div>	
+		</div>
+		<div ng-show="ctrl.playlist.showPlaylist">
+			<pre> {{ ctrl.playlist.selectedSongs | json }}</pre>
+		</div>
+	</div>
+	
+</body>
+
+</html>

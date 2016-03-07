@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+
+	<script type="text/javascript" src="index.js"></script> 
+	<script type="text/javascript" src="services.js"></script>
+
+	<style>
+
+	#right-panel {
+		width: 310px;
+		display: inline-block;
+	}
+
+	#left-panel {
+		width: 210px;
+		display: inline-block;
+		float: left;
+	}
+
+	#red {
+		width: 150px;
+		height: 150px;
+		display: inline-block;
+		background: red;
+	} 
+
+	#green {
+		width: 150px;
+		height: 150px;
+		display: inline-block;
+		background: green;
+	}
+
+	#yellow {
+		width: 150px;
+		height: 150px;
+		display: inline-block;
+		background: yellow;
+	}
+
+	#blue {
+		width: 150px;
+		height: 150px;
+		display: inline-block;
+		background: blue;
+	}
+
+	.selected {
+		border: 3px solid grey;
+		margin: -3px;
+		opacity: .8;
+	}
+
+	#outcome {
+		position: absolute;
+		top: 300px;
+	}
+
+	</style>
+</head>
+
+<body ng-app="MyApp">
+	<div ng-controller="MainController as ctrl">
+		<div>
+			<div id="left-panel">
+				<div>
+					<div ng-show="ctrl.usersTurn"><h3>Your turn</h3></div>
+					<div ng-hide="ctrl.usersTurn"><h3>Simon's turn</h3></div>
+					<div ng-repeat="color in ctrl.displaySequence track by $index">
+						<span>{{ $index+1 }}: </span><span ng-bind="color"></span>
+					</div>
+				</div>
+			</div>
+			<div id = "right-panel">
+				<div>
+					<div id="red" ng-class="{'selected': ctrl.colorSelected === 'red'}" ng-click="ctrl.squareSelected('red')">
+
+					</div>
+					<div id="green" ng-class="{'selected': ctrl.colorSelected === 'green'}" ng-click="ctrl.squareSelected('green')">
+
+					</div>
+				</div>
+				<div>
+					<div id="yellow" ng-class="{'selected': ctrl.colorSelected === 'yellow'}" ng-click="ctrl.squareSelected('yellow')">
+
+					</div>
+					<div id="blue" ng-class="{'selected': ctrl.colorSelected === 'blue'}" ng-click="ctrl.squareSelected('blue')">
+					</div>
+				</div>
+				<button ng-hide="ctrl.usersTurn" ng-click="ctrl.letSimonPlay()">Let Simon Play</button><span ng-bind="ctrl.outcome"></span>
+			</div>
+			
+		</div>
+		<div>
+			<pre>
+				{{ ctrl | json }}
+			</pre>
+		</div>
+	</div>
+
+</body>
+
+</html>
