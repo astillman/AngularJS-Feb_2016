@@ -8,7 +8,6 @@ angular.module('sampleNode')
 
   function getAllTodos() {
     TodoListResource.getAllTodos().$promise.then(function onSuccess(successResponse) {
-      console.log(successResponse);
       self.todos = successResponse;
     }, function onError(errorResponse) { 
       console.log(errorResponse);
